@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[dmchurch]]></name>
+    <description lang="en"><![CDATA[Personal User Overlay]]></description>
+    <homepage>http://github.com/dmchurch/portage-overlay</homepage>
+    <owner type="person">
+      <email>dani.church@gmail.com</email>
+      <name><![CDATA[Danielle Church]]></name>
+    </owner>
+    <source type="git">git://github.com/dmchurch/portage-overlay.git</source>
+    <feed>http://github.com/dmchurch/portage-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
