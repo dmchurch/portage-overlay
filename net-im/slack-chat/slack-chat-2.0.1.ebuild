@@ -46,6 +46,7 @@ src_install() {
 	exeinto /opt/slack
 	doexe usr/share/slack/slack
 	doexe usr/share/slack/libnode.so
+	doexe usr/share/slack/libffmpeg.so
 	rm -f usr/share/slack/{slack,lib*.so*}
 
 	dodir /opt/bin
