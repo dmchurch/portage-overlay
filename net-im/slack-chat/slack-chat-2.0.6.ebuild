@@ -38,22 +38,23 @@ S=${WORKDIR}
 QA_PREBUILT="*"
 
 src_prepare() {
-	sed -i 's!/usr/share/slack!/opt/slack!' usr/share/applications/slack.desktop || \
+	sed -i 's!/usr/bin/slack!/opt/bin/slack!' usr/share/applications/slack.desktop || \
 		die "Patching desktop file failed"
 }
 
 src_install() {
 	exeinto /opt/slack
-	doexe usr/share/slack/slack
-	doexe usr/share/slack/libnode.so
-	doexe usr/share/slack/libffmpeg.so
-	rm -f usr/share/slack/{slack,lib*.so*}
+	doexe usr/lib/slack/slack
+	doexe usr/lib/slack/libnode.so
+	doexe usr/lib/slack/libffmpeg.so
+	doexe usr/lib/slack/libCallsCore.so
+	rm -f usr/lib/slack/{slack,lib*.so*}
 
 	dodir /opt/bin
 	dosym ../slack/slack /opt/bin/slack || die
 
 	insinto /opt
-	doins -r usr/share/slack
+	doins -r usr/lib/slack
 
 	domenu usr/share/applications/slack.desktop
 	doicon usr/share/pixmaps/slack.png
