@@ -10,13 +10,12 @@ SRC_URI_BASE="https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/sla
 
 DESCRIPTION="Slack Chat (Beta) for Linux"
 HOMEPAGE="https://slack.com"
-SRC_URI="x86? ( ${SRC_URI_BASE}-${PV}-i386.deb )
-	amd64? ( ${SRC_URI_BASE}-${PV}-amd64.deb )"
+SRC_URI="amd64? ( ${SRC_URI_BASE}-${PV}-amd64.deb )"
 RESTRICT="mirror strip"
 
 LICENSE="slack"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
