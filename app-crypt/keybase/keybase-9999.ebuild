@@ -17,11 +17,12 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	!app-crypt/kbfs
 	>=dev-lang/go-1.6:0
 	sys-apps/yarn
 	net-libs/nodejs[npm]"
 RDEPEND="${DEPEND}
+	!app-crypt/kbfs
+	!app-crypt/keybase-bin
 	app-crypt/gnupg
 	sys-fs/fuse
 	gnome-base/gconf
