@@ -13,6 +13,7 @@ or modified.
 ## Packages provided
 
 * `app-crypt/keybase`
+* `app-crypt/keybase-bin`
 * `net-im/slack-chat`
 
 [overlay]: https://wiki.gentoo.org/wiki/Overlay
