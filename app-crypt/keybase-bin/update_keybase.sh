@@ -109,9 +109,38 @@ echo "Fetching amd64 and i386 .deb packages for version $LATEST_VERSION..."
 AMD64_DEB="$TMPDIR/${BASENAME_VERSION}amd64.deb"
 I386_DEB="$TMPDIR/${BASENAME_VERSION}i386.deb"
 
+verify_signature() {
+  local sigfile=$1 file=$2 signer=$3
+  {
+    gpg --verify --batch --status-fd 3 "$sigfile" "$file" 3>&1 1>&4 | (
+      local got_sig=false trust_sig=false satisfied=false
+      local prefix status args
+      while read prefix status args; do
+        case "$status,$args" in
+          NEWSIG,*)
+            got_sig=false
+            trust_sig=false
+            ;;
+          GOODSIG,*"<$signer>")
+            got_sig=true
+            ;;
+          TRUST_FULLY,*|TRUST_ULTIMATE,*)
+            trust_sig=true
+            ;;
+        esac
+        $got_sig && $trust_sig && satisfied=true
+      done
+      if ! $satisfied; then
+        echo "Error: did not find expected valid, trusted signature from $signer." >&2
+        exit 1
+      fi
+    )
+  } 4>&1
+}
+
 echo "Verifying GPG signatures for packages..."
-gpg --verify <(curl -fsS https://prerelease.keybase.io/keybase_amd64.deb.sig) "$AMD64_DEB"
-gpg --verify <(curl -fsS https://prerelease.keybase.io/keybase_i386.deb.sig) "$I386_DEB"
+verify_signature <(curl -fsS https://prerelease.keybase.io/keybase_amd64.deb.sig) "$AMD64_DEB" code@keybase.io
+verify_signature <(curl -fsS https://prerelease.keybase.io/keybase_i386.deb.sig) "$I386_DEB" code@keybase.io
 
 echo "Updating ebuild..."
 LATEST_PV=${LATEST_VERSION%+*}
