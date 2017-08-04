@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils unpacker
 
-COMMIT_HASH="b6dff3f9a"
+COMMIT_HASH="ea5dcd9b2"
 
 SRC_URI_BASE="https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_"
 
