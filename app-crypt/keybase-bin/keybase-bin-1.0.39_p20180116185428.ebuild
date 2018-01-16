@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit eutils systemd unpacker
 
 COMMIT_HASH="f4ff41d1b"
 
@@ -57,6 +57,8 @@ src_install() {
 	done
 
 	domenu usr/share/applications/keybase.desktop
+
+	systemd_douserunit usr/lib/systemd/user/*.service
 
 	cd usr/share/icons/hicolor
 	local size
