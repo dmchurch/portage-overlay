@@ -45,6 +45,7 @@ src_install() {
 	doins -r opt/keybase
 
 	exeinto /usr/bin
+	doexe usr/bin/git-remote-keybase
 	doexe usr/bin/kbfsfuse
 	doexe usr/bin/kbnm
 	doexe usr/bin/keybase
