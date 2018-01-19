@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit eutils systemd unpacker
 
 COMMIT_HASH="d29f565ed"
 
@@ -45,6 +45,7 @@ src_install() {
 	doins -r opt/keybase
 
 	exeinto /usr/bin
+	doexe usr/bin/git-remote-keybase
 	doexe usr/bin/kbfsfuse
 	doexe usr/bin/kbnm
 	doexe usr/bin/keybase
@@ -56,6 +57,8 @@ src_install() {
 	done
 
 	domenu usr/share/applications/keybase.desktop
+
+	systemd_douserunit usr/lib/systemd/user/*.service
 
 	cd usr/share/icons/hicolor
 	local size
