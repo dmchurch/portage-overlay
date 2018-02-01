@@ -49,6 +49,7 @@ src_install() {
 	doexe usr/bin/kbfsfuse
 	doexe usr/bin/kbnm
 	doexe usr/bin/keybase
+	doexe usr/bin/keybase-mount-helper
 	doexe usr/bin/run_keybase
 
 	for d in etc/chromium etc/opt/chrome; do
