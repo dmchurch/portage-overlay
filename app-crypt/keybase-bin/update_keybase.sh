@@ -166,7 +166,7 @@ fi
 manifest_entry() {
   local type=$1 f=$2
   local fields="$type" spec tag prog
-  for spec in :basename ":stat -c%s" SHA256:sha256sum SHA512:sha512sum WHIRLPOOL:whirlpool-hash; do
+  for spec in :basename ":stat -c%s" BLAKE2B:b2sum SHA512:sha512sum; do
     tag=${spec%%:*}
     prog=${spec#*:}
     fields="$fields $tag `$prog "$f" | awk '{print $1}'`"
