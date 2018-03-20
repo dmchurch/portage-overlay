@@ -49,9 +49,10 @@ src_install() {
 	doexe usr/bin/kbfsfuse
 	doexe usr/bin/kbnm
 	doexe usr/bin/keybase
+	doexe usr/bin/keybase-redirector
 	doexe usr/bin/run_keybase
 
-	for d in etc/chromium etc/opt/chrome; do
+	for d in etc/chromium etc/opt/chrome usr/lib/mozilla; do
 		insinto /$d/native-messaging-hosts
 		doins $d/native-messaging-hosts/io.keybase.kbnm.json
 	done
