@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils systemd unpacker
 
-COMMIT_HASH="3d3e869c2c"
+COMMIT_HASH="22eccdd576"
 
 SRC_URI_BASE="https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_"
 
