@@ -37,9 +37,13 @@ src_install() {
 	exeinto /opt/keybase
 	doexe opt/keybase/Keybase
 	doexe opt/keybase/libffmpeg.so
-	doexe opt/keybase/libnode.so
+	doexe opt/keybase/libEGL.so
+	doexe opt/keybase/libGLESv2.so
+	doexe opt/keybase/libVkICD_mock_icd.so
 	doexe opt/keybase/post_install.sh
 	rm -f opt/keybase/{Keybase,lib*.so,post_install.sh}
+
+	exeinto /opt/keybase/
 
 	insinto /opt
 	doins -r opt/keybase
