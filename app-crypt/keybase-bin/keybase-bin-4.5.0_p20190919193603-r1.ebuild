@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils systemd unpacker
+inherit eutils systemd unpacker xdg-utils
 
 COMMIT_HASH="93e889ab01"
 
@@ -39,7 +39,6 @@ src_install() {
 	doexe opt/keybase/libffmpeg.so
 	doexe opt/keybase/libEGL.so
 	doexe opt/keybase/libGLESv2.so
-	doexe opt/keybase/libVkICD_mock_icd.so
 	doexe opt/keybase/post_install.sh
 	rm -f opt/keybase/{Keybase,lib*.so,post_install.sh}
 
@@ -74,4 +73,9 @@ src_install() {
 
 pkg_postinst() {
 	/opt/keybase/post_install.sh
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
